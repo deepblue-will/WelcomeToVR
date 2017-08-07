@@ -7,6 +7,15 @@ import {VRInstance} from 'react-vr-web';
 
 function init(bundle, parent, options) {
   const vr = new VRInstance(bundle, 'WelcomeToVR', parent, {
+    raycasters: [
+        {
+          getType: () => "mycursor",
+          getRayOrigin: () => [0, 0, 0],
+          getRayDirection: () => [0, 0, -1],
+          drawsCursor: () => true
+        } 
+     ],
+     cursorVisibility: 'visible',
     // Add custom options here
     ...options,
   });

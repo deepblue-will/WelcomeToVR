@@ -8,12 +8,18 @@ import {
 } from 'react-vr';
 
 export default class WelcomeToVR extends React.Component {
+  constructor() {
+    super();
+    this.state = {textColor: 'white'};
+  }
+
   render() {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
         <Text
           style={{
+            color: this.state.textColor,
             backgroundColor: '#777879',
             fontSize: 0.8,
             fontWeight: '400',
@@ -22,8 +28,11 @@ export default class WelcomeToVR extends React.Component {
             paddingRight: 0.2,
             textAlign: 'center',
             textAlignVertical: 'center',
-            transform: [{translate: [1, 0, -10]}, {rotateX : -30}, {rotateZ: 90}, {rotateY: 30}, {scale: 0.6}],
-          }}>
+            transform: [{translate: [0, 0, -6]}],
+          }}
+          onEnter={() => this.setState({textColor: 'red'})}
+          onExit={() => this.setState({textColor: 'white'})}
+          >
           hello
         </Text>
       </View>
